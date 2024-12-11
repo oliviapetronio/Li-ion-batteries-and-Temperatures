@@ -1,1 +1,285 @@
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import warnings
+import pandas as pd
 
+# Read in files from excel
+
+lfp05 = pd.read_excel('LFP_k1_1C_05degC.xlsx')
+lfp25 = pd.read_excel('LFP_k1_1C_25degC.xlsx')
+lfp35 = pd.read_excel('LFP_k1_1C_35degC.xlsx')
+
+nca05 = pd.read_excel('NCA_k1_1C_05degC.xlsx')
+nca25 = pd.read_excel('NCA_k1_1C_25degC.xlsx')
+nca35 = pd.read_excel('NCA_k1_1C_35degC.xlsx')
+
+
+nmc05 = pd.read_excel('NMC_k1_1C_05degC.xlsx')
+nmc25 = pd.read_excel('NMC_k1_1C_25degC.xlsx')
+nmc35 = pd.read_excel('NMC_k1_1C_35degC.xlsx')
+
+# Remove variables not being studies, date_time, test_time(s), step_time(s), step_index 
+# from all battery types and temperatures
+
+lfp05 = lfp05.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+lfp25 = lfp25.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+lfp35 = lfp35.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+
+nca05 = nca05.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+nca25 = nca25.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+nca35 = nca35.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+
+nmc05 = nmc05.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+nmc25 = nmc25.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+nmc35 = nmc35.drop(["Date_Time","Test_Time(s)", "Step_Time(s)", "Step_Index"], axis = 1)
+
+
+# Get general overview through plotting
+# Here are histograms of our target variable voltage, measured in volts.
+
+lfp05.hist(column = 'Voltage(V)',bins=10)
+plt.title('lfp05')
+plt.xlabel('Voltage')
+plt.show()
+
+
+lfp25.hist(column = 'Voltage(V)', bins = 10)
+plt.title('lfp25')
+plt.xlabel('Voltage')
+plt.show()
+         
+
+lfp35.hist(column = 'Voltage(V)', bins = 10)
+plt.title('lfp35')
+plt.xlabel('Voltage')
+plt.show()
+
+nca05.hist(column = 'Voltage(V)', bins = 10)
+plt.title('nca05')
+plt.xlabel('Voltage')
+plt.show()
+
+nca25.hist(column = 'Voltage(V)', bins = 10)
+plt.title('nca25')
+plt.xlabel('Voltage')
+plt.show()
+
+nca35.hist(column = 'Voltage(V)', bins = 10)
+plt.title('nca35')
+plt.xlabel('Voltage')
+plt.show()
+
+nmc05.hist(column = 'Voltage(V)', bins = 10)
+plt.title('nmc05')
+plt.xlabel('Voltage')
+plt.show()
+
+nmc25.hist(column = 'Voltage(V)', bins = 10)
+plt.title('nmc25')
+plt.xlabel('Voltage')
+plt.show()
+
+nmc35.hist(column = 'Voltage(V)', bins = 10)
+plt.title('nmc35')
+plt.xlabel('Voltage')
+plt.show()
+
+
+
+# The first feature histograms, current measured in ampere
+lfp05.hist(column = 'Current(A)',bins=10)
+plt.title('lfp05')
+plt.xlabel('Voltage')
+plt.show()
+
+
+lfp25.hist(column = 'Current(A)', bins = 10)
+plt.title('lfp25')
+plt.xlabel('Voltage')
+plt.show()
+         
+
+lfp35.hist(column = 'Current(A)', bins = 10)
+plt.title('lfp35')
+plt.xlabel('Voltage')
+plt.show()
+
+nca05.hist(column = 'Current(A)', bins = 10)
+plt.title('nca05')
+plt.xlabel('Voltage')
+plt.show()
+
+nca25.hist(column = 'Current(A)', bins = 10)
+plt.title('nca25')
+plt.xlabel('Voltage')
+plt.show()
+
+nca35.hist(column = 'Current(A)', bins = 10)
+plt.title('nca35')
+plt.xlabel('Voltage')
+plt.show()
+
+nmc05.hist(column = 'Current(A)', bins = 10)
+plt.title('nmc05')
+plt.xlabel('Voltage')
+plt.show()
+
+nmc25.hist(column = 'Current(A)', bins = 10)
+plt.title('nmc25')
+plt.xlabel('Voltage')
+plt.show()
+
+nmc35.hist(column = 'Current(A)', bins = 10)
+plt.title('nmc35')
+plt.xlabel('Voltage')
+plt.show()
+
+
+
+# The second feature histograms, surface temperature measured in celsius 
+lfp05.hist(column = 'Surface_Temp(degC)',bins=10)
+plt.title('lfp05')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+
+lfp25.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('lfp25')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+         
+
+lfp35.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('lfp35')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+nca05.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('nca05')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+nca25.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('nca25')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+nca35.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('nca35')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+nmc05.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('nmc05')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+nmc25.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('nmc25')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+nmc35.hist(column = 'Surface_Temp(degC)', bins = 10)
+plt.title('nmc35')
+plt.xlabel('Surface_Temp(degC)')
+plt.show()
+
+
+# The second feature histograms, surface temperature measured in celsius 
+lfp05.hist(column = 'Current(A)',bins=10)
+plt.title('lfp05')
+plt.xlabel('Current(A)')
+plt.show()
+
+
+lfp25.hist(column = 'Current(A)', bins = 10)
+plt.title('lfp25')
+plt.xlabel('Current(A)')
+plt.show()
+         
+
+lfp35.hist(column = 'Current(A)', bins = 10)
+plt.title('lfp35')
+plt.xlabel('Current(A)')
+plt.show()
+
+nca05.hist(column = 'Current(A)', bins = 10)
+plt.title('nca05')
+plt.xlabel('Current(A)')
+plt.show()
+
+nca25.hist(column = 'Current(A)', bins = 10)
+plt.title('nca25')
+plt.xlabel('Current(A)')
+plt.show()
+
+nca35.hist(column = 'Current(A)', bins = 10)
+plt.title('nca35')
+plt.xlabel('Current(A)')
+plt.show()
+
+nmc05.hist(column = 'Current(A)', bins = 10)
+plt.title('nmc05')
+plt.xlabel('Current(A)')
+plt.show()
+
+nmc25.hist(column = 'Current(A)', bins = 10)
+plt.title('nmc25')
+plt.xlabel('Current(A)')
+plt.show()
+
+nmc35.hist(column = 'Current(A)', bins = 10)
+plt.title('nmc35')
+plt.xlabel('Current(A)')
+plt.show()
+
+
+# Get correlations of the variables studying for lfp battery type
+
+corrMatrixLfp05 = lfp05.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixLfp05, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for LFP deg: 05')
+plt.show()
+
+
+corrMatrixLfp25 = lfp25.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixLfp25, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for LFP deg: 25')
+plt.show()
+
+corrMatrixLfp35 = lfp35.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixLfp35, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for LFP deg: 35')
+plt.show()
+
+
+# Get correlations of the variables studying for nmc battery type
+
+corrMatrixNmc05 = nmc05.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixNmc05, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for NMC deg: 05')
+plt.show()
+
+
+corrMatrixNmc25 = nca25.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixNmc25, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for NMC deg: 25')
+plt.show()
+
+corrMatrixNmc35 = nmc35.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixNmc35, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for NMC deg: 35')
+plt.show()
