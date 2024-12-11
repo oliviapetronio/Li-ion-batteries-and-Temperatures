@@ -259,6 +259,30 @@ sns.heatmap(corrMatrixLfp35, annot=True, cmap='coolwarm', fmt = '.2f', linewidth
 plt.title('Correlation Heatmap for LFP deg: 35')
 plt.show()
 
+# Get correlations of the variables studying for nca battery type
+
+corrMatrixNca05 = nca05.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixNca05, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for NCA deg: 05')
+plt.show()
+
+
+corrMatrixNca25 = nca25.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixNca25, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for NCA deg: 25')
+plt.show()
+
+corrMatrixNca35 = nca35.corr()
+plt.figure(figsize=(5,5))
+sns.heatmap(corrMatrixNca35, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
+
+plt.title('Correlation Heatmap for NCA deg: 35')
+plt.show()
+
 
 # Get correlations of the variables studying for nmc battery type
 
@@ -270,7 +294,7 @@ plt.title('Correlation Heatmap for NMC deg: 05')
 plt.show()
 
 
-corrMatrixNmc25 = nca25.corr()
+corrMatrixNmc25 = nmc25.corr()
 plt.figure(figsize=(5,5))
 sns.heatmap(corrMatrixNmc25, annot=True, cmap='coolwarm', fmt = '.2f', linewidths = .5)
 
@@ -283,3 +307,6 @@ sns.heatmap(corrMatrixNmc35, annot=True, cmap='coolwarm', fmt = '.2f', linewidth
 
 plt.title('Correlation Heatmap for NMC deg: 35')
 plt.show()
+
+
+
