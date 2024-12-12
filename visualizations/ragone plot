@@ -1,0 +1,46 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset (adjust file path and data structure as per your files)
+# Example: df = pd.read_excel("LFP_data.xlsx")
+# Replace with the actual data processing step to load your data
+
+# Sample structure: C_rate, Specific Energy (Wh/kg), Specific Power (W/kg), Nominal Mass (kg)
+# Assuming these columns are present in the dataset
+df = pd.DataFrame({
+    'C_rate': [0.05, 1, 2, 3, 5, 10, 15, 20],
+    'Specific_Energy_Wh_per_kg': [200, 180, 160, 140, 120, 100, 80, 60],
+    'Specific_Power_W_per_kg': [50, 100, 150, 200, 250, 300, 350, 400],
+    'Nominal_Mass_kg': [0.05] * 8
+})
+
+# Calculate Ragone plot values
+df['Ragone_Energy'] = df['Specific_Energy_Wh_per_kg']
+df['Ragone_Power'] = df['Specific_Power_W_per_kg']
+
+# Plot Ragone Plot
+plt.figure(figsize=(10, 6))
+plt.loglog(df['Ragone_Power'], df['Ragone_Energy'], marker='o')
+plt.xlabel('Specific Power (W/kg)')
+plt.ylabel('Specific Energy (Wh/kg)')
+plt.title('Ragone Plot for LFP Battery')
+plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+plt.show()
+
+# Plot C-rate vs Specific Energy
+plt.figure(figsize=(10, 6))
+plt.plot(df['C_rate'], df['Specific_Energy_Wh_per_kg'], marker='o')
+plt.xlabel('C-rate (1/h)')
+plt.ylabel('Specific Energy (Wh/kg)')
+plt.title('C-rate vs Specific Energy for LFP Battery')
+plt.grid(True, linestyle='--', linewidth=0.5)
+plt.show()
+
+# Plot C-rate vs Specific Power
+plt.figure(figsize=(10, 6))
+plt.plot(df['C_rate'], df['Specific_Power_W_per_kg'], marker='o', color='orange')
+plt.xlabel('C-rate (1/h)')
+plt.ylabel('Specific Power (W/kg)')
+plt.title('C-rate vs Specific Power for LFP Battery')
+plt.grid(True, linestyle='--', linewidth=0.5)
+plt.show()
