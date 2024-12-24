@@ -1,0 +1,1 @@
+Li-ion batteries have a finite life span. Under higher temperatures, higher charge rates, or other conditions, the life span of lithium-ion batteries shortens. We used L2 regularization (Ridge) method to demonstrate the polynomial regression of lithium-ion batteries’ performance
